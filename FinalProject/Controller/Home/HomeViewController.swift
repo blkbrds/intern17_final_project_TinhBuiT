@@ -20,6 +20,9 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        loadAPI()
+        configTableView()
+        configNavigation()
     }
 
     // MARK: - Private functions
@@ -31,9 +34,6 @@ final class HomeViewController: UIViewController {
         tableView.backgroundColor = UIColor.clear
         self.view.insertSubview(backgroundImage, at: 0)
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        loadAPI()
-        configTableView()
-        configNavigation()
     }
 
     private func configNavigation() {
