@@ -57,6 +57,16 @@ final class HomeViewController: UIViewController {
     private func configTableView() {
         let nib = UINib(nibName: "HomeTableViewCell", bundle: .main)
         tableView.register(nib, forCellReuseIdentifier: "HomeTableViewCell")
+
+        let nibForecast = UINib(nibName: "ForecastTableViewCell", bundle: .main)
+        tableView.register(nibForecast, forCellReuseIdentifier: "ForecastTableViewCell")
+
+        let nibAmount = UINib(nibName: "AmountOfRainTableViewCell", bundle: .main)
+        tableView.register(nibAmount, forCellReuseIdentifier: "AmountOfRainTableViewCell")
+
+        let nibDetail = UINib(nibName: "DetailTableViewCell", bundle: .main)
+        tableView.register(nibDetail, forCellReuseIdentifier: "DetailTableViewCell")
+
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -92,9 +102,18 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
-            cell.viewModel = viewModel.viewModelForItem(indexPath: indexPath)
-            return cell
+            guard let homeCell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
+            homeCell.viewModel = viewModel.viewModelForItem(indexPath: indexPath)
+            return homeCell
+        case 1:
+            guard let forecastCell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableViewCell", for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
+            return forecastCell
+        case 2:
+            guard let amountCell = tableView.dequeueReusableCell(withIdentifier: "AmountOfRainTableViewCell", for: indexPath) as? AmountOfRainTableViewCell else { return UITableViewCell() }
+            return amountCell
+        case 3:
+            guard let cellDetail = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
+            return cellDetail
         default: break
         }
         return UITableViewCell()

@@ -17,6 +17,9 @@ final class HomeViewModel {
 
     enum TypeCell: Int {
         case homeCell = 0
+        case forecastCell
+        case amountOfRainCell
+        case detailCell
     }
 
     // MARK: - Functions
@@ -28,8 +31,12 @@ final class HomeViewModel {
     func heightcell(at indexPath: IndexPath) -> CGFloat {
         guard let type = TypeCell(rawValue: indexPath.row) else { return 0 }
         switch type {
-        case .homeCell:
+        case .homeCell, .detailCell:
             return 200
+        case .forecastCell:
+            return 500
+        case .amountOfRainCell:
+            return 150
         }
     }
 
