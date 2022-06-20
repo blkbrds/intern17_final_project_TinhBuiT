@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1346AD0C286013DD00FD46DA /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD0B286013DD00FD46DA /* Weather.swift */; };
+		1346AD12286013F600FD46DA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD0F286013F600FD46DA /* Networking.swift */; };
+		1346AD13286013F600FD46DA /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD10286013F600FD46DA /* WeatherService.swift */; };
+		1346AD14286013F600FD46DA /* Data.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD11286013F600FD46DA /* Data.Ext.swift */; };
+		1346AD532860154300FD46DA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD4C2860154300FD46DA /* HomeViewModel.swift */; };
+		1346AD542860154300FD46DA /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1346AD4D2860154300FD46DA /* HomeViewController.xib */; };
+		1346AD552860154300FD46DA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD4E2860154300FD46DA /* HomeViewController.swift */; };
+		1346AD562860154300FD46DA /* HomeTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD502860154300FD46DA /* HomeTableViewCellViewModel.swift */; };
+		1346AD572860154300FD46DA /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD512860154300FD46DA /* HomeTableViewCell.swift */; };
+		1346AD582860154300FD46DA /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1346AD522860154300FD46DA /* HomeTableViewCell.xib */; };
+		1346AD6028604D0500FD46DA /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD5F28604D0500FD46DA /* Int.swift */; };
 		5AD611088853D9B72BA99EB1 /* Pods_FinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D338D4668001CE7615E14B1 /* Pods_FinalProjectTests.framework */; };
-		6AF60D052313B26E00F5CBA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF60D042313B26E00F5CBA2 /* LaunchScreen.storyboard */; };
 		6AF60D082313B31200F5CBA2 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF60D072313B31200F5CBA2 /* App.swift */; };
 		6AF60D192313B35800F5CBA2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF60D0C2313B35700F5CBA2 /* Errors.swift */; };
 		6AF60D222313B35800F5CBA2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF60D152313B35800F5CBA2 /* String.swift */; };
@@ -49,10 +59,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1346AD0B286013DD00FD46DA /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		1346AD0F286013F600FD46DA /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		1346AD10286013F600FD46DA /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		1346AD11286013F600FD46DA /* Data.Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.Ext.swift; sourceTree = "<group>"; };
+		1346AD4C2860154300FD46DA /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1346AD4D2860154300FD46DA /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		1346AD4E2860154300FD46DA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1346AD502860154300FD46DA /* HomeTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		1346AD512860154300FD46DA /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		1346AD522860154300FD46DA /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		1346AD5F28604D0500FD46DA /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		1D338D4668001CE7615E14B1 /* Pods_FinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F8188BF7E7977ED1A7F2CE /* Pods-FinalProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5084BD3D925876C8DE2E9504 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AF60D042313B26E00F5CBA2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AF60D072313B31200F5CBA2 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		6AF60D0C2313B35700F5CBA2 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		6AF60D152313B35800F5CBA2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -119,12 +139,42 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		1346AD4A2860154300FD46DA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1346AD4B2860154300FD46DA /* Home */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1346AD4B2860154300FD46DA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1346AD4F2860154300FD46DA /* Cell */,
+				1346AD4E2860154300FD46DA /* HomeViewController.swift */,
+				1346AD4D2860154300FD46DA /* HomeViewController.xib */,
+				1346AD4C2860154300FD46DA /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1346AD4F2860154300FD46DA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1346AD512860154300FD46DA /* HomeTableViewCell.swift */,
+				1346AD522860154300FD46DA /* HomeTableViewCell.xib */,
+				1346AD502860154300FD46DA /* HomeTableViewCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		6AF60D062313B2EF00F5CBA2 /* Define */ = {
 			isa = PBXGroup;
 			children = (
 				6AF60D072313B31200F5CBA2 /* App.swift */,
 				6AF60D0C2313B35700F5CBA2 /* Errors.swift */,
 				6AF60D152313B35800F5CBA2 /* String.swift */,
+				1346AD5F28604D0500FD46DA /* Int.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -132,9 +182,10 @@
 		6AF60D232313B56B00F5CBA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6AF60D242313B56B00F5CBA2 /* Session.swift */,
-				6AF60D252313B56B00F5CBA2 /* Schema */,
 				6AF60D672313B56B00F5CBA2 /* API */,
+				6AF60D252313B56B00F5CBA2 /* Schema */,
+				6AF60D242313B56B00F5CBA2 /* Session.swift */,
+				1346AD0B286013DD00FD46DA /* Weather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +200,9 @@
 		6AF60D672313B56B00F5CBA2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				1346AD11286013F600FD46DA /* Data.Ext.swift */,
+				1346AD0F286013F600FD46DA /* Networking.swift */,
+				1346AD10286013F600FD46DA /* WeatherService.swift */,
 				6AF60D692313B56B00F5CBA2 /* Core */,
 			);
 			path = API;
@@ -251,9 +305,9 @@
 			children = (
 				6AFD0302231375EE004940FA /* AppDelegate.swift */,
 				6AFD0309231375EF004940FA /* Assets.xcassets */,
-				6AFD030E231375EF004940FA /* Info.plist */,
-				6AF60D042313B26E00F5CBA2 /* LaunchScreen.storyboard */,
+				1346AD4A2860154300FD46DA /* Controller */,
 				6AF60D062313B2EF00F5CBA2 /* Define */,
+				6AFD030E231375EF004940FA /* Info.plist */,
 				6AF60DD82313B98800F5CBA2 /* Library */,
 				6AF60D232313B56B00F5CBA2 /* Model */,
 				6AF60E242313C13600F5CBA2 /* View */,
@@ -365,7 +419,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AFD030A231375EF004940FA /* Assets.xcassets in Resources */,
-				6AF60D052313B26E00F5CBA2 /* LaunchScreen.storyboard in Resources */,
+				1346AD582860154300FD46DA /* HomeTableViewCell.xib in Resources */,
+				1346AD542860154300FD46DA /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,10 +542,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AF60E0A2313B9C000F5CBA2 /* UIViewExt.swift in Sources */,
+				1346AD13286013F600FD46DA /* WeatherService.swift in Sources */,
 				6AF613B22313C13A00F5CBA2 /* Label.swift in Sources */,
 				6AF60DC42313B56B00F5CBA2 /* Error.swift in Sources */,
+				1346AD12286013F600FD46DA /* Networking.swift in Sources */,
+				1346AD552860154300FD46DA /* HomeViewController.swift in Sources */,
 				6AF60E132313B9C000F5CBA2 /* NSErrorExt.swift in Sources */,
 				6AF613B72313C13A00F5CBA2 /* CollectionView.swift in Sources */,
+				1346AD562860154300FD46DA /* HomeTableViewCellViewModel.swift in Sources */,
 				6AFD0303231375EE004940FA /* AppDelegate.swift in Sources */,
 				6AF613B02313C13A00F5CBA2 /* CollectionCell.swift in Sources */,
 				6AF60DC52313B56B00F5CBA2 /* ApiManager.swift in Sources */,
@@ -499,8 +558,12 @@
 				6AF60E1E2313B9C000F5CBA2 /* UIViewControllerExt.swift in Sources */,
 				6AF60D082313B31200F5CBA2 /* App.swift in Sources */,
 				6AF60D802313B56B00F5CBA2 /* Session.swift in Sources */,
+				1346AD532860154300FD46DA /* HomeViewModel.swift in Sources */,
+				1346AD6028604D0500FD46DA /* Int.swift in Sources */,
 				6AF60DC62313B56B00F5CBA2 /* ResponseSerializer.swift in Sources */,
+				1346AD0C286013DD00FD46DA /* Weather.swift in Sources */,
 				6AF60D192313B35800F5CBA2 /* Errors.swift in Sources */,
+				1346AD14286013F600FD46DA /* Data.Ext.swift in Sources */,
 				6AF613BF2313C13A00F5CBA2 /* ScrollView.swift in Sources */,
 				6AF60D222313B35800F5CBA2 /* String.swift in Sources */,
 				6AF60DC22313B56B00F5CBA2 /* RequestSerializer.swift in Sources */,
@@ -509,6 +572,7 @@
 				6AF613C12313C13A00F5CBA2 /* TableView.swift in Sources */,
 				6AF613C42313C13A00F5CBA2 /* TableCell.swift in Sources */,
 				6AF613C92313C13A00F5CBA2 /* ImageView.swift in Sources */,
+				1346AD572860154300FD46DA /* HomeTableViewCell.swift in Sources */,
 				6AF60E212313B9C000F5CBA2 /* CollectionExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
