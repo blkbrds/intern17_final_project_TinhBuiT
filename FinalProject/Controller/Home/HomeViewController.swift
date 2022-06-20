@@ -15,26 +15,27 @@ final class HomeViewController: UIViewController {
 
     // MARK: - Properties
     var viewModel: HomeViewModel = HomeViewModel()
-    private let screenWidth = UIScreen.main.bounds.width
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
 
+    // MARK: - Private functions
+    private func setupUI() {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-
         backgroundImage.image = UIImage(named: "cloudBackground")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
 
         tableView.backgroundColor = UIColor.clear
         self.view.insertSubview(backgroundImage, at: 0)
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         loadAPI()
         configTableView()
-        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         configNavigation()
     }
 
-    // MARK: - Private functions
     private func configNavigation() {
         title = "Da Nang"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -85,7 +86,6 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return viewModel.numberOfItem(section: section)
         return 7
     }
 
@@ -105,21 +105,6 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return 200
-        case 1:
-            return 500
-        case 2:
-            return 150
-        case 3:
-            return 200
-        case 4:
-            return 200
-        case 5:
-            return (screenWidth) / 2 + 100
-        default:
-            return 300
-        }
+        return viewModel.heightcell(at: indexPath)
     }
 }

@@ -33,14 +33,21 @@ final class HomeTableViewCell: UITableViewCell {
     private func updateView() {
         guard let viewModel = viewModel,
               let weather = viewModel.mainWeather?.weather?.first,
-              let main = viewModel.mainWeather?.main,
-              let tempMaxs = main.tempmax,
-              let tempMins = main.tempMin,
-              let temps = main.temp
+              let main = viewModel.mainWeather?.main
         else { return }
         statusLabel.text = weather.descrip
-        tempMaxLabel.text = "\(Int(tempMaxs - 273))°"
-        tempLabel.text = "\(Int(temps - 273))°"
-        tempMinLabel.text = "\(Int(tempMins - 273))°"
+        if let tempMaxDouble = main.tempmax {
+            setTempToLable(temp: Int(tempMaxDouble), label: tempMaxLabel)
+        }
+        if let tempMinDouble = main.tempMin {
+            setTempToLable(temp: Int(tempMinDouble), label: tempMinLabel)
+        }
+        if let tempDouble = main.temp {
+            setTempToLable(temp: Int(tempDouble), label: tempLabel)
+        }
+    }
+
+    private func setTempToLable(temp: Int, label: UILabel) {
+        label.text = temp.convertDegreesCelsius
     }
 }

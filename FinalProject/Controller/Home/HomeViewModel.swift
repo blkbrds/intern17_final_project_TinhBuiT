@@ -9,21 +9,17 @@
 import Foundation
 import UIKit
 
-typealias Completion2 = (Bool, String) -> Void
-
 final class HomeViewModel {
 
-    enum TypeCell: Int {
-        case cell0 = 0
-        case cell1
-        case cell2
-        case cell3
-        case cell4
-    }
-
+    // MARK: - Properties
     var weather: Weather?
     var main: Main?
 
+    enum TypeCell: Int {
+        case homeCell = 0
+    }
+
+    // MARK: - Functions
     func viewModelForItem(indexPath: IndexPath) -> HomeTableViewCellViewModel {
         guard let weather = weather else { return HomeTableViewCellViewModel() }
         return HomeTableViewCellViewModel(mainWeather: MainWeather(weather: [weather], main: main))
@@ -32,16 +28,8 @@ final class HomeViewModel {
     func heightcell(at indexPath: IndexPath) -> CGFloat {
         guard let type = TypeCell(rawValue: indexPath.row) else { return 0 }
         switch type {
-        case .cell0:
+        case .homeCell:
             return 200
-        case .cell1:
-            return 100
-        case .cell2:
-            return 100
-        case .cell3:
-            return 100
-        case .cell4:
-            return 100
         }
     }
 
@@ -58,16 +46,4 @@ final class HomeViewModel {
             }
         }
     }
-
-    func convertToJSON(from data: Data) -> [String: Any] {
-        var json: [String: Any] = [:]
-        do {
-          if let jsonObj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-            json = jsonObj
-          }
-        } catch {
-          print("JSON casting error")
-        }
-        return json
-      }
 }

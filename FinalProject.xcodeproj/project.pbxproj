@@ -17,6 +17,7 @@
 		1346AD562860154300FD46DA /* HomeTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD502860154300FD46DA /* HomeTableViewCellViewModel.swift */; };
 		1346AD572860154300FD46DA /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD512860154300FD46DA /* HomeTableViewCell.swift */; };
 		1346AD582860154300FD46DA /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1346AD522860154300FD46DA /* HomeTableViewCell.xib */; };
+		1346AD6028604D0500FD46DA /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1346AD5F28604D0500FD46DA /* Int.swift */; };
 		5AD611088853D9B72BA99EB1 /* Pods_FinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D338D4668001CE7615E14B1 /* Pods_FinalProjectTests.framework */; };
 		6AF60D082313B31200F5CBA2 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF60D072313B31200F5CBA2 /* App.swift */; };
 		6AF60D192313B35800F5CBA2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF60D0C2313B35700F5CBA2 /* Errors.swift */; };
@@ -68,6 +69,7 @@
 		1346AD502860154300FD46DA /* HomeTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		1346AD512860154300FD46DA /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		1346AD522860154300FD46DA /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		1346AD5F28604D0500FD46DA /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		1D338D4668001CE7615E14B1 /* Pods_FinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F8188BF7E7977ED1A7F2CE /* Pods-FinalProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5084BD3D925876C8DE2E9504 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 				6AF60D072313B31200F5CBA2 /* App.swift */,
 				6AF60D0C2313B35700F5CBA2 /* Errors.swift */,
 				6AF60D152313B35800F5CBA2 /* String.swift */,
+				1346AD5F28604D0500FD46DA /* Int.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				6AF60D082313B31200F5CBA2 /* App.swift in Sources */,
 				6AF60D802313B56B00F5CBA2 /* Session.swift in Sources */,
 				1346AD532860154300FD46DA /* HomeViewModel.swift in Sources */,
+				1346AD6028604D0500FD46DA /* Int.swift in Sources */,
 				6AF60DC62313B56B00F5CBA2 /* ResponseSerializer.swift in Sources */,
 				1346AD0C286013DD00FD46DA /* Weather.swift in Sources */,
 				6AF60D192313B35800F5CBA2 /* Errors.swift in Sources */,
