@@ -12,8 +12,10 @@ import UIKit
 final class HomeViewModel {
 
     // MARK: - Properties
-    var weather: Weather?
-    var main: Main?
+    var hourly: [Hourly]?
+    var mainWeather: MainWeather?
+    var mainApi: MainApi?
+    var daily: [Daily]?
 
     enum TypeCell: Int {
         case homeCell = 0
@@ -23,9 +25,14 @@ final class HomeViewModel {
     }
 
     // MARK: - Functions
-    func viewModelForItem(indexPath: IndexPath) -> HomeTableViewCellViewModel {
-        guard let weather = weather else { return HomeTableViewCellViewModel() }
-        return HomeTableViewCellViewModel(mainWeather: MainWeather(weather: [weather], main: main))
+    func viewModelForHomeCell(indexPath: IndexPath) -> HomeTableViewCellViewModel {
+        guard let mainWeather = mainWeather else { return HomeTableViewCellViewModel() }
+        return HomeTableViewCellViewModel(mainWeather: mainWeather)
+    }
+
+    func viewModelForForecastCell(indexPath: IndexPath) -> ForecastCellViewModel {
+     guard let mainApi = mainApi else { return ForecastCellViewModel() }
+        return ForecastCellViewModel(hourly: mainApi.hourly, daily: mainApi.daily)
     }
 
     func heightcell(at indexPath: IndexPath) -> CGFloat {
@@ -34,7 +41,7 @@ final class HomeViewModel {
         case .homeCell, .detailCell:
             return 200
         case .forecastCell:
-            return 500
+            return 530
         case .amountOfRainCell:
             return 150
         }
@@ -44,9 +51,21 @@ final class HomeViewModel {
         WeatherService.getDataWeather { [weak self] result in
             guard let this = self else { return }
             switch result {
+            case .success(let mainWeather):
+                this.mainWeather = mainWeather
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func getDataMain(completion: @escaping APICompletion) {
+        WeatherService.getDataMainApi { [weak self] result in
+            guard let this = self else { return }
+            switch result {
             case .success(let data):
-                this.weather = data.weather?.first
-                this.main = data.main
+                this.mainApi = data
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

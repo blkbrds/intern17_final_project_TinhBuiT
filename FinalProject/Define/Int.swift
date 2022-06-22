@@ -15,6 +15,6 @@ extension App {
 
 extension Int {
     var convertDegreesCelsius: String {
-        return "\(self - 273)°"
+        return "\(self - 273)°C"
     }
 }

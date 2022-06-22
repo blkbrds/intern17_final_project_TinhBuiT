@@ -14,6 +14,14 @@ final class ForecastTableViewCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
 
+    // MARK: - Properties
+    var viewModel: ForecastCellViewModel? {
+        didSet {
+            collectionView.reloadData()
+            tableView.reloadData()
+        }
+    }
+    
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +58,8 @@ extension ForecastTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ForecastCollectionViewCell", for: indexPath) as? ForecastCollectionViewCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ForecastCollectionViewCell", for: indexPath) as? ForecastCollectionViewCell else { return UICollectionViewCell() }
+        cell.viewModel = viewModel?.viewModelForCollectin(at: indexPath)
         return cell
     }
 
@@ -63,11 +72,13 @@ extension ForecastTableViewCell: UICollectionViewDataSource, UICollectionViewDel
 extension ForecastTableViewCell: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 8
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastDayTableViewCell", for: indexPath) as? ForecastDayTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastDayTableViewCell", for: indexPath) as? ForecastDayTableViewCell,
+              let viewModel = viewModel else { return UITableViewCell() }
+        cell.viewModel = viewModel.viewModelForForecastDayTableCell(at: indexPath)
         return cell
     }
 }
