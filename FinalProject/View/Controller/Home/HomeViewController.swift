@@ -20,9 +20,9 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        loadAPI()
         configTableView()
         configNavigation()
+        loadAPI()
     }
 
     // MARK: - Private functions
@@ -57,6 +57,16 @@ final class HomeViewController: UIViewController {
     private func configTableView() {
         let nib = UINib(nibName: "HomeTableViewCell", bundle: .main)
         tableView.register(nib, forCellReuseIdentifier: "HomeTableViewCell")
+
+        let nibForecast = UINib(nibName: "ForecastTableViewCell", bundle: .main)
+        tableView.register(nibForecast, forCellReuseIdentifier: "ForecastTableViewCell")
+
+        let nibAmount = UINib(nibName: "AmountOfRainTableViewCell", bundle: .main)
+        tableView.register(nibAmount, forCellReuseIdentifier: "AmountOfRainTableViewCell")
+
+        let nibDetail = UINib(nibName: "DetailTableViewCell", bundle: .main)
+        tableView.register(nibDetail, forCellReuseIdentifier: "DetailTableViewCell")
+
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -66,17 +76,54 @@ final class HomeViewController: UIViewController {
     }
 
     private func loadAPI() {
+        HUD.show()
+        let group = DispatchGroup()
+        group.enter()
+        loadWeather {
+            group.leave()
+        }
+        group.enter()
+        loadMainApi {
+            group.leave()
+        }
+        group.notify(queue: .main, execute: { [weak self] in
+            HUD.dismiss()
+            self?.tableView.reloadData()
+        })
+    }
+
+    private func loadWeather(completion: @escaping () -> Void) {
         viewModel.getDataWeather { [weak self] result in
-            guard let this = self else { return }
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    this.tableView.reloadData()
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+            guard let this = self else {
+                completion()
+                return
+            }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    break
+                case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }
+                completion()
+            }
+        }
+    }
+
+    private func loadMainApi(completion: @escaping () -> Void) {
+        viewModel.getDataMain { [weak self] result in
+            guard let this = self else {
+                completion()
+                return
+            }
+            DispatchQueue.main.async {
+                switch result {
+                case.success:
+                    break
+                case .failure(let error):
+                    this.alert(msg: error.localizedDescription, handler: nil)
+                }
+                completion()
             }
         }
     }
@@ -90,11 +137,22 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
-            cell.viewModel = viewModel.viewModelForItem(indexPath: indexPath)
-            return cell
+        let type = HomeViewModel.TypeCell(rawValue: indexPath.row)
+        switch type {
+        case .homeCell:
+            guard let homeCell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
+            homeCell.viewModel = viewModel.viewModelForHomeCell(indexPath: indexPath)
+            return homeCell
+        case .forecastCell:
+            guard let forecastCell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableViewCell", for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
+            forecastCell.viewModel = viewModel.viewModelForForecastCell(indexPath: indexPath)
+            return forecastCell
+        case .amountOfRainCell:
+            guard let amountCell = tableView.dequeueReusableCell(withIdentifier: "AmountOfRainTableViewCell", for: indexPath) as? AmountOfRainTableViewCell else { return UITableViewCell() }
+            return amountCell
+        case .detailCell:
+            guard let cellDetail = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
+            return cellDetail
         default: break
         }
         return UITableViewCell()

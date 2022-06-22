@@ -7,46 +7,58 @@
 //
 
 import Foundation
+import ObjectMapper
 
-final class Weather {
+final class MainWeather: Mappable {
+
+    // MARK: - Properties
+    var weather: [Weather]?
+    var main: Main?
+
+    init?(map: Map) {
+        mapping(map: map)
+    }
+
+    func mapping(map: Map) {
+        main <- map["main"]
+        weather <- map["weather"]
+    }
+}
+
+final class Weather: Mappable {
 
     // MARK: - Properties
     var main: String?
     var descrip: String?
     var icon: String?
 
-    // MARK: - Initialize
-    init(json: JSON) {
-        self.main = json["main"] as? String
-        self.descrip = json["description"] as? String
-        self.icon = json["icon"] as? String
+    init?(map: Map) {
+        mapping(map: map)
+    }
+
+    func mapping(map: Map) {
+        main <- map["main"]
+        descrip <- map["description"]
+        icon <- map["icon"]
     }
 }
 
-final class Main {
+final class Main: Mappable {
 
     // MARK: - Properties
     var temp: Double?
     var tempmax: Double?
     var tempMin: Double?
+    var feelLike: Double?
 
-    // MARK: - Initialize
-    init(json: JSON) {
-        self.temp = json["temp"] as? Double
-        self.tempmax = json["temp_max"] as? Double
-        self.tempMin = json["temp_min"] as? Double
+    init?(map: Map) {
+        mapping(map: map)
     }
-}
 
-final class MainWeather {
-
-    // MARK: - Properties
-    var weather: [Weather]?
-    var main: Main?
-
-    // MARK: - Initialize
-    init(weather: [Weather]?, main: Main?) {
-        self.main = main
-        self.weather = weather
+    func mapping(map: Map) {
+        temp <- map["temp"]
+        tempmax <- map["temp_max"]
+        tempMin <- map["temp_min"]
+        feelLike <- map["feels_like"]
     }
 }
