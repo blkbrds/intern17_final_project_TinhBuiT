@@ -44,4 +44,19 @@ extension  String {
             return nil
         }
     }
+
+    var convertTime: String {
+        switch self {
+        case  "04", "05", "06", "07", "08", "09":
+            return "sang"
+        case  "10", "11", "12", "13", "14", "15":
+            return "trua"
+        case "16", "17", "18", "19", "20", "21":
+            return "toi"
+        case "22", "23", "00", "01", "02", "03":
+            return "dem"
+        default:
+            return "oh"
+        }
+    }
 }

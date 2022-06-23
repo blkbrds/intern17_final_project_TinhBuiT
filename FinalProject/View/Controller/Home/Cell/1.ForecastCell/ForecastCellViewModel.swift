@@ -13,7 +13,7 @@ final class ForecastCellViewModel {
     // MARK: - Properties
     var hourly: [Hourly]?
     var daily: [Daily]?
-    var mainApi: MainApi?
+//    var mainApi: MainApi?
 
     // MARK: - Initialize
     init() { }

@@ -23,11 +23,6 @@ final class HomeTableViewCell: UITableViewCell {
         }
     }
 
-    // MARK: - Life Cycle
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     // MARK: - Private functions
     private func updateView() {
         guard let viewModel = viewModel,

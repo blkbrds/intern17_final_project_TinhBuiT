@@ -21,7 +21,7 @@ final class ForecastTableViewCell: UITableViewCell {
             tableView.reloadData()
         }
     }
-    
+
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()

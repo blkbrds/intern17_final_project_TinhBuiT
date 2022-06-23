@@ -28,9 +28,13 @@ final class WeatherService {
         }
     }
 
-    static func getDataMainApi(completion: @escaping Completion<MainApi>) {
-        let urlString = "https://api.openweathermap.org/data/2.5/onecall?lat=16.054407&lon=108.202164&appid=4d8532b3f8d712217bea8a168dd2af8f"
-        api.request(method: .get, urlString: urlString) { result in
+    static func getDataMainApi(lat: Double, completion: @escaping Completion<MainApi>) {
+        let urlString = "https://api.openweathermap.org/data/2.5/onecall"
+        var params: [String: Any] = [:]
+        params["lat"] = lat
+        params["lon"] = 108.202164
+        params["appid"] = "4d8532b3f8d712217bea8a168dd2af8f"
+        api.request(method: .get, urlString: urlString, parameters: params) { result in
             switch result {
             case .success(let data):
                 if let data = data as? JSObject,

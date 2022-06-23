@@ -1,14 +1,14 @@
 //
-//  ForecastCollectionViewCellViewModel.swift
+//  AmountCollectionViewCellViewModel.swift
 //  FinalProject
 //
-//  Created by Tinh Bui T. VN.Danang on 6/21/22.
+//  Created by Tinh Bui T. VN.Danang on 6/22/22.
 //  Copyright © 2022 Asiantech. All rights reserved.
 //
 
 import Foundation
 
-final class ForecastCollectionViewCellViewModel {
+final class AmountCollectionViewCellViewModel {
 
     // MARK: - Properties
     var hourly: Hourly?
@@ -19,7 +19,7 @@ final class ForecastCollectionViewCellViewModel {
     }
 
     // MARK: - Functions
-    func UTCToLocal(date: Double) -> String {
+    func utcToHour(date: Double) -> String {
         let date = NSDate(timeIntervalSince1970: date)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"

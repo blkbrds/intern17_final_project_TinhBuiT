@@ -149,9 +149,11 @@ extension HomeViewController: UITableViewDataSource {
             return forecastCell
         case .amountOfRainCell:
             guard let amountCell = tableView.dequeueReusableCell(withIdentifier: "AmountOfRainTableViewCell", for: indexPath) as? AmountOfRainTableViewCell else { return UITableViewCell() }
+            amountCell.viewModel = viewModel.viewModelForAmountOfRainCell(indexPath: indexPath)
             return amountCell
         case .detailCell:
             guard let cellDetail = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
+            cellDetail.viewModel = viewModel.viewModelForDetailCell(indexPath: indexPath)
             return cellDetail
         default: break
         }

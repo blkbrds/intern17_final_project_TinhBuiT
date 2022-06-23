@@ -10,11 +10,42 @@ import UIKit
 
 final class AmountOfRainTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    @IBOutlet private weak var collectionView: UICollectionView!
+
+    // MARK: - Properties
+    var viewModel: AmountOfRainViewModel? {
+        didSet {
+            collectionView.reloadData()
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configCollectionView()
+    }
+
+    // MARK: - Private functions
+    private func configCollectionView() {
+        let nib = UINib(nibName: "CollectionViewCell", bundle: .main)
+        collectionView.register(nib, forCellWithReuseIdentifier: "CollectionViewCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+}
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+extension AmountOfRainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 75, height: 140)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        cell.viewModel = viewModel?.viewModelForAmountCollectionView(at: indexPath)
+        return cell
     }
 }

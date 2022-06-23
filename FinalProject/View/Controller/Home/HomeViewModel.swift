@@ -35,6 +35,16 @@ final class HomeViewModel {
         return ForecastCellViewModel(hourly: mainApi.hourly, daily: mainApi.daily)
     }
 
+    func viewModelForDetailCell(indexPath: IndexPath) -> DetailTableViewCellViewModel {
+        guard let mainApi = mainApi else { return DetailTableViewCellViewModel() }
+        return DetailTableViewCellViewModel(mainApi: mainApi)
+    }
+
+    func viewModelForAmountOfRainCell(indexPath: IndexPath) -> AmountOfRainViewModel {
+        guard let mainApi = mainApi else { return AmountOfRainViewModel() }
+        return AmountOfRainViewModel(hourly: mainApi.hourly)
+    }
+
     func heightcell(at indexPath: IndexPath) -> CGFloat {
         guard let type = TypeCell(rawValue: indexPath.row) else { return 0 }
         switch type {
@@ -43,7 +53,7 @@ final class HomeViewModel {
         case .forecastCell:
             return 530
         case .amountOfRainCell:
-            return 150
+            return 180
         }
     }
 
@@ -61,7 +71,7 @@ final class HomeViewModel {
     }
 
     func getDataMain(completion: @escaping APICompletion) {
-        WeatherService.getDataMainApi { [weak self] result in
+        WeatherService.getDataMainApi(lat: 16.054407) { [weak self] result in
             guard let this = self else { return }
             switch result {
             case .success(let data):

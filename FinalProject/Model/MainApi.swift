@@ -32,6 +32,7 @@ final class Hourly: Mappable {
     var dt: Double?
     var temp: Double?
     var weathers: [Weather]?
+    var pop: Double?
 
     // MARK: - Initialize
     init?(map: Map) {
@@ -42,6 +43,7 @@ final class Hourly: Mappable {
         dt <- map["dt"]
         temp <- map["temp"]
         weathers <- map["weather"]
+        pop <- map["pop"]
     }
 }
 
@@ -51,6 +53,10 @@ final class Daily: Mappable {
     var dt: Double?
     var temp: Temp?
     var weather: [Weather]?
+    var pressure: Int?
+    var humidity: Int?
+    var wind: Double?
+    var uvIndex: Double?
 
     // MARK: - Initialize
     init?(map: Map) {
@@ -61,6 +67,10 @@ final class Daily: Mappable {
         dt <- map["dt"]
         temp <- map["temp"]
         weather <- map["weather"]
+        pressure <- map["pressure"]
+        humidity <- map["humidity"]
+        wind <- map["wind_speed"]
+        uvIndex <- map["uvi"]
     }
 }
 
