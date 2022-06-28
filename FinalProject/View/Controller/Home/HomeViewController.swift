@@ -67,6 +67,15 @@ final class HomeViewController: UIViewController {
         let nibDetail = UINib(nibName: "DetailTableViewCell", bundle: .main)
         tableView.register(nibDetail, forCellReuseIdentifier: "DetailTableViewCell")
 
+        let nibWind = UINib(nibName: "WindPressureTableViewCell", bundle: .main)
+        tableView.register(nibWind, forCellReuseIdentifier: "WindPressureTableViewCell")
+
+        let nibSun = UINib(nibName: "SunTableViewCell", bundle: .main)
+        tableView.register(nibSun, forCellReuseIdentifier: "SunTableViewCell")
+
+        let nibMap = UINib(nibName: "MapTableViewCell", bundle: .main)
+        tableView.register(nibMap, forCellReuseIdentifier: "MapTableViewCell")
+
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -155,6 +164,18 @@ extension HomeViewController: UITableViewDataSource {
             guard let cellDetail = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
             cellDetail.viewModel = viewModel.viewModelForDetailCell(indexPath: indexPath)
             return cellDetail
+        case.windCell :
+            guard let cellWind = tableView.dequeueReusableCell(withIdentifier: "WindPressureTableViewCell", for: indexPath) as? WindPressureTableViewCell else { return UITableViewCell() }
+            cellWind.viewModel = viewModel.viewModelForWindPresureCell(indexPath: indexPath)
+            return cellWind
+        case.sunCell:
+            guard let cellSun = tableView.dequeueReusableCell(withIdentifier: "SunTableViewCell", for: indexPath) as? SunTableViewCell else { return UITableViewCell() }
+            cellSun.viewModel = viewModel.viewModelForSunCell(indexPath: indexPath)
+            return cellSun
+        case.mapCell:
+            guard let cellMap = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell", for: indexPath) as? MapTableViewCell else { return UITableViewCell() }
+            cellMap.viewModel = viewModel.viewModelForMapCell(indexPath: indexPath)
+            return cellMap
         default: break
         }
         return UITableViewCell()

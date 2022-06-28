@@ -16,18 +16,22 @@ final class HomeViewModel {
     var mainWeather: MainWeather?
     var mainApi: MainApi?
     var daily: [Daily]?
+    private let screenWidth = UIScreen.main.bounds.width
 
     enum TypeCell: Int {
         case homeCell = 0
         case forecastCell
         case amountOfRainCell
         case detailCell
+        case windCell
+        case sunCell
+        case mapCell
     }
 
     // MARK: - Functions
     func viewModelForHomeCell(indexPath: IndexPath) -> HomeTableViewCellViewModel {
-        guard let mainWeather = mainWeather else { return HomeTableViewCellViewModel() }
-        return HomeTableViewCellViewModel(mainWeather: mainWeather)
+        guard let mainApi = mainApi else { return HomeTableViewCellViewModel() }
+        return HomeTableViewCellViewModel(mainApi: mainApi)
     }
 
     func viewModelForForecastCell(indexPath: IndexPath) -> ForecastCellViewModel {
@@ -45,6 +49,21 @@ final class HomeViewModel {
         return AmountOfRainViewModel(hourly: mainApi.hourly)
     }
 
+    func viewModelForWindPresureCell(indexPath: IndexPath) -> WindPresureTableViewCellViewModel {
+        guard let mainApi = mainApi else { return WindPresureTableViewCellViewModel() }
+        return WindPresureTableViewCellViewModel(mainApi: mainApi)
+    }
+
+    func viewModelForSunCell(indexPath: IndexPath) -> SunTableViewCellViewModel {
+        guard let mainApi = mainApi else { return SunTableViewCellViewModel() }
+        return SunTableViewCellViewModel(mainApi: mainApi)
+    }
+
+    func viewModelForMapCell(indexPath: IndexPath) -> MapTableViewcellViewModel {
+        guard let mainApi = mainApi else { return MapTableViewcellViewModel() }
+        return MapTableViewcellViewModel(mainApi: mainApi)
+    }
+
     func heightcell(at indexPath: IndexPath) -> CGFloat {
         guard let type = TypeCell(rawValue: indexPath.row) else { return 0 }
         switch type {
@@ -54,6 +73,12 @@ final class HomeViewModel {
             return 530
         case .amountOfRainCell:
             return 180
+        case .windCell:
+            return 180
+        case .sunCell:
+            return screenWidth / 2 + 100
+        case .mapCell:
+            return 300
         }
     }
 

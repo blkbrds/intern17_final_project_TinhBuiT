@@ -12,13 +12,17 @@ import UIKit
 extension Double {
 
     var convertAmountOfRainIcon: UIImage? {
-        if self < 25 {
+        switch self {
+        case 0...0.24:
             return #imageLiteral(resourceName: "rain_ico_0")
-        } else if self < 50 {
+        case 0.25...0.5:
             return #imageLiteral(resourceName: "rain_ico_10")
-        } else if self < 100 {
+        case 0.51...0.7:
             return #imageLiteral(resourceName: "rain")
+        case 0.71...1:
+            return #imageLiteral(resourceName: "rain_ico_70")
+        default:
+            return nil
         }
-        return nil
     }
 }

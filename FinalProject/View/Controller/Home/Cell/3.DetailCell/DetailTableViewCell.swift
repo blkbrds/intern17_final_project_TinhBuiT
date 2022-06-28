@@ -10,11 +10,11 @@ import UIKit
 
 final class DetailTableViewCell: UITableViewCell {
 
-    // MARK: Private functions
+    // MARK: IBoutlets
     @IBOutlet private weak var iconImage: UIImageView!
-    @IBOutlet private weak var pressureLabel: UILabel!
+    @IBOutlet private weak var tempMaxLabel: UILabel!
     @IBOutlet private weak var humiditylabel: UILabel!
-    @IBOutlet private weak var windLabel: UILabel!
+    @IBOutlet private weak var tempMinlabel: UILabel!
     @IBOutlet private weak var uvIndexLabel: UILabel!
 
     // MARK: - Properties
@@ -33,14 +33,14 @@ final class DetailTableViewCell: UITableViewCell {
         if let icon = weather.icon {
             setIconToImage(icon: icon, images: iconImage)
         }
-        if let pressInt = daily.pressure {
-            pressureLabel.text = "\(pressInt)hPa"
+        if let tempMaxDouble = daily.temp?.max {
+            setTempToLable(temp: Int(tempMaxDouble), label: tempMaxLabel)
         }
         if let humidityInt = daily.humidity {
             humiditylabel.text = "\(humidityInt)%"
         }
-        if let windDouble = daily.wind {
-            windLabel.text = "\(windDouble)m/s"
+        if let tempMinDouble = daily.temp?.min {
+          setTempToLable(temp: Int(tempMinDouble), label: tempMinlabel)
         }
         if let uvDoubel = daily.uvIndex {
             uvIndexLabel.text = "\(uvDoubel)"
@@ -49,5 +49,8 @@ final class DetailTableViewCell: UITableViewCell {
 
     private func setIconToImage(icon: String, images: UIImageView) {
        images.image = icon.convertWeatherIcon
+    }
+    private func setTempToLable(temp: Int, label: UILabel) {
+        label.text = temp.convertDegreesCelsius
     }
 }

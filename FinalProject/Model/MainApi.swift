@@ -14,6 +14,10 @@ final class MainApi: Mappable {
     // MARK: - Properties
     var daily: [Daily]?
     var hourly: [Hourly]?
+    var minutely: [Minutely]?
+    var current: Current?
+    var lat: Double?
+    var lon: Double?
 
     // MARK: - Initialize
     init?(map: Map) {
@@ -23,6 +27,43 @@ final class MainApi: Mappable {
     func mapping(map: Map) {
         daily <- map["daily"]
         hourly <- map["hourly"]
+        minutely <- map["minutely"]
+        current <- map["current"]
+        lat <- map["lat"]
+        lon <- map["lon"]
+    }
+}
+
+final class Minutely: Mappable {
+
+    // MARK: - Properties
+    var dt: Double?
+
+    // MARK: - Initialize
+    init?(map: Map) {
+        mapping(map: map)
+    }
+
+    func mapping(map: Map) {
+        dt <- map["dt"]
+    }
+}
+
+final class Current: Mappable {
+
+    // MARK: - Properties
+    var temp: Double?
+    var feelsLike: Double?
+    var weather: [Weather]?
+
+    init?(map: Map) {
+        mapping(map: map)
+    }
+
+    func mapping(map: Map) {
+        temp <- map["temp"]
+        feelsLike <- map["feels_like"]
+        weather <- map["weather"]
     }
 }
 
@@ -57,6 +98,8 @@ final class Daily: Mappable {
     var humidity: Int?
     var wind: Double?
     var uvIndex: Double?
+    var sunrise: Double?
+    var sunset: Double?
 
     // MARK: - Initialize
     init?(map: Map) {
@@ -71,6 +114,8 @@ final class Daily: Mappable {
         humidity <- map["humidity"]
         wind <- map["wind_speed"]
         uvIndex <- map["uvi"]
+        sunset <- map["sunset"]
+        sunrise <- map["sunrise"]
     }
 }
 

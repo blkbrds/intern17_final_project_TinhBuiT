@@ -10,6 +10,7 @@ import UIKit
 
 final class AmountOfRainTableViewCell: UITableViewCell {
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!
 
     // MARK: - Properties

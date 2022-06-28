@@ -10,7 +10,7 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
 
-    // MARK: IBOutlet
+    // MARK: - IBOutlets
     @IBOutlet private weak var popLabel: UILabel!
     @IBOutlet private weak var imageLabel: UIImageView!
     @IBOutlet private weak var timeLabel: UILabel!
@@ -21,7 +21,7 @@ class CollectionViewCell: UICollectionViewCell {
             updateView()
         }
     }
-    
+
     // MARK: - Private functions
     private func updateView() {
         guard let viewModel = viewModel,

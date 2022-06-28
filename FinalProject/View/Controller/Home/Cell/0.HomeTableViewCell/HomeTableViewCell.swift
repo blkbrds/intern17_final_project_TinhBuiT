@@ -26,13 +26,13 @@ final class HomeTableViewCell: UITableViewCell {
     // MARK: - Private functions
     private func updateView() {
         guard let viewModel = viewModel,
-              let weather = viewModel.mainWeather?.weather?.first,
-              let main = viewModel.mainWeather?.main
+              let weather = viewModel.mainApi?.current?.weather?.first,
+        let main = viewModel.mainApi?.current
         else { return }
         if let status = weather.descrip {
             setUpCaseLabel(title: status, label: statusLabel)
         }
-        if let tempFeelsLikeDouble = main.feelLike {
+        if let tempFeelsLikeDouble = main.feelsLike {
             setTempToLable(temp: Int(tempFeelsLikeDouble), label: feelsLikeLabel)
         }
         if let tempDouble = main.temp {

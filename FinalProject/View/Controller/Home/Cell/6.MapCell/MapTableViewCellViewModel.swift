@@ -1,14 +1,14 @@
 //
-//  HomeTableViewCellViewModel.swift
+//  MapTableViewCellViewModel.swift
 //  FinalProject
 //
-//  Created by Tinh Bui T. VN.Danang on 6/10/22.
+//  Created by Tinh Bui T. VN.Danang on 6/23/22.
 //  Copyright © 2022 Asiantech. All rights reserved.
 //
 
 import Foundation
 
-final class HomeTableViewCellViewModel {
+final class MapTableViewcellViewModel {
 
     // MARK: - Properties
     var mainApi: MainApi?
