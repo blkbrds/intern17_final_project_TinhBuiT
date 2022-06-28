@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import ObjectMapper
 
 extension ApiManager {
 
@@ -50,3 +51,56 @@ extension ApiManager {
         return request
     }
 }
+
+
+//extension Mapper {
+//
+//    func mapObject<T: NSObject>(_ result: Result<Any>, completion: @escaping (_ item: T?, _ error: Error?) -> Void) where T: Mappable {
+//        switch result {
+//        case .success(let json):
+//            guard let json = json as? JSObject else {
+//                DispatchQueue.main.async {
+//                    completion(nil, Api.Error.json)
+//                }
+//                return
+//            }
+//            if let obj: T = Mapper<T>().map(JSON: json) {
+//                DispatchQueue.main.async {
+//                    completion(obj, nil)
+//                }
+//            } else {
+//                DispatchQueue.main.async {
+//                    completion(nil, nil)
+//                }
+//            }
+//        case .failure(let error):
+//            DispatchQueue.main.async {
+//                completion(nil, error)
+//            }
+//        }
+//    }
+//
+//    func mapArray<T>(_ result: Result<Any>, completion: @escaping (_ items: [T]?, _ nextPageToken: String?, _ error: Error?) -> Void) where T: Mappable {
+//        switch result {
+//        case .success(let json):
+//            guard let json = json as? JSObject else {
+//                DispatchQueue.main.async {
+//                    completion(nil, nil, Api.Error.json)
+//                }
+//                return
+//            }
+//            guard let nextPageToken = json[“nextPageToken”] as? String else { return }
+//            guard let data = json[“items”] as? JSArray else {
+//                return
+//            }
+//            let items: [T] = Mapper<T>().mapArray(JSONArray: data)
+//            DispatchQueue.main.async {
+//                completion(items, nextPageToken, nil)
+//            }
+//        case .failure(let error):
+//            DispatchQueue.main.async {
+//                completion(nil, nil, error)
+//            }
+//        }
+//    }
+//}

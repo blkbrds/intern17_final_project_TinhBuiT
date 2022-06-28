@@ -11,12 +11,12 @@ import Foundation
 final class HomeTableViewCellViewModel {
 
     // MARK: - Properties
-    var mainWeather: MainWeather?
+    var mainApi: MainApi?
 
     // MARK: - Initialize
     init() {}
 
-    init(mainWeather: MainWeather) {
-        self.mainWeather = mainWeather
+    init(mainApi: MainApi) {
+        self.mainApi = mainApi
     }
 }

@@ -13,9 +13,8 @@ final class HomeTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet private weak var iconImage: UIImageView!
     @IBOutlet private weak var statusLabel: UILabel!
-    @IBOutlet private weak var tempMaxLabel: UILabel!
-    @IBOutlet private weak var tempMinLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!
+    @IBOutlet weak var feelsLikeLabel: UILabel!
 
     // MARK: - Properties
     var viewModel: HomeTableViewCellViewModel? {
@@ -24,30 +23,33 @@ final class HomeTableViewCell: UITableViewCell {
         }
     }
 
-    // MARK: - Life Cycle
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     // MARK: - Private functions
     private func updateView() {
         guard let viewModel = viewModel,
-              let weather = viewModel.mainWeather?.weather?.first,
-              let main = viewModel.mainWeather?.main
+              let weather = viewModel.mainApi?.current?.weather?.first,
+        let main = viewModel.mainApi?.current
         else { return }
-        statusLabel.text = weather.descrip
-        if let tempMaxDouble = main.tempmax {
-            setTempToLable(temp: Int(tempMaxDouble), label: tempMaxLabel)
+        if let status = weather.descrip {
+            setUpCaseLabel(title: status, label: statusLabel)
         }
-        if let tempMinDouble = main.tempMin {
-            setTempToLable(temp: Int(tempMinDouble), label: tempMinLabel)
+        if let tempFeelsLikeDouble = main.feelsLike {
+            setTempToLable(temp: Int(tempFeelsLikeDouble), label: feelsLikeLabel)
         }
         if let tempDouble = main.temp {
             setTempToLable(temp: Int(tempDouble), label: tempLabel)
+        }
+        if let icon = weather.icon {
+            setIconToImage(icon: icon, images: iconImage)
         }
     }
 
     private func setTempToLable(temp: Int, label: UILabel) {
         label.text = temp.convertDegreesCelsius
+    }
+    private func setIconToImage(icon: String, images: UIImageView) {
+       images.image = icon.convertWeatherIcon
+    }
+    private func setUpCaseLabel(title: String, label: UILabel) {
+        label.text = title.capitalizingFirstLetter()
     }
 }
