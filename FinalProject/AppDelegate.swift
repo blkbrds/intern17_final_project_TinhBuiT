@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import RealmSwift
 
 typealias HUD = SVProgressHUD
 
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        configRealm()
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = HomeViewController()
         let navi = UINavigationController(rootViewController: vc)
@@ -26,18 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-    }
+    func configRealm() {
+            let fileManager = FileManager.default
+                var config = Realm.Configuration()
+                let urls = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+                if let applicationSupportURL = urls.last {
+                    do {
+                        try fileManager.createDirectory(at: applicationSupportURL, withIntermediateDirectories: true, attributes: nil)
+                        config.fileURL = applicationSupportURL.appendingPathComponent("demo.realm")
+                    } catch let err {
+                        print(err)
+                    }
+                }
+            config.deleteRealmIfMigrationNeeded = true
+                Realm.Configuration.defaultConfiguration = config
+        }
 }

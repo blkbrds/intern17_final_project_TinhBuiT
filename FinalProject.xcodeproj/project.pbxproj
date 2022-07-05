@@ -34,6 +34,10 @@
 		137D0C4E28630621002C678E /* DetailTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137D0C4D28630621002C678E /* DetailTableViewCellViewModel.swift */; };
 		137D0C5328631BE4002C678E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137D0C5128631BE4002C678E /* CollectionViewCell.swift */; };
 		137D0C5428631BE4002C678E /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137D0C5228631BE4002C678E /* CollectionViewCell.xib */; };
+		13899812286A9ACC00075854 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13899810286A9ACC00075854 /* SearchViewController.swift */; };
+		13899813286A9ACC00075854 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13899811286A9ACC00075854 /* SearchViewController.xib */; };
+		13899817286AB16500075854 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13899816286AB16500075854 /* Search.swift */; };
+		1389981B286AFB8900075854 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1389981A286AFB8900075854 /* SearchViewModel.swift */; };
 		138EF7E72864230900973227 /* WindPressureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138EF7E52864230900973227 /* WindPressureTableViewCell.swift */; };
 		138EF7E82864230900973227 /* WindPressureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138EF7E62864230900973227 /* WindPressureTableViewCell.xib */; };
 		138EF7EC286427E500973227 /* WindPresureTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138EF7EB286427E500973227 /* WindPresureTableViewCellViewModel.swift */; };
@@ -43,6 +47,9 @@
 		138EF805286473F100973227 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138EF803286473F100973227 /* MapTableViewCell.swift */; };
 		138EF806286473F100973227 /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138EF804286473F100973227 /* MapTableViewCell.xib */; };
 		138EF80A286474CA00973227 /* MapTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138EF809286474CA00973227 /* MapTableViewCellViewModel.swift */; };
+		13AE5059286D52830054D4EB /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AE5057286D52830054D4EB /* SearchTableViewCell.swift */; };
+		13AE505A286D52830054D4EB /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13AE5058286D52830054D4EB /* SearchTableViewCell.xib */; };
+		13AE505E286D5AEB0054D4EB /* SearchTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AE505D286D5AEB0054D4EB /* SearchTableViewCellViewModel.swift */; };
 		13B4DD3C286164E3002FBB0B /* MainApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B4DD3B286164E3002FBB0B /* MainApi.swift */; };
 		13B4DD4028616BD7002FBB0B /* ForecastCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B4DD3F28616BD7002FBB0B /* ForecastCellViewModel.swift */; };
 		13B4DD452861738B002FBB0B /* ForecastDayTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B4DD442861738B002FBB0B /* ForecastDayTableCellViewModel.swift */; };
@@ -115,6 +122,10 @@
 		137D0C4D28630621002C678E /* DetailTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		137D0C5128631BE4002C678E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		137D0C5228631BE4002C678E /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		13899810286A9ACC00075854 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		13899811286A9ACC00075854 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		13899816286AB16500075854 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		1389981A286AFB8900075854 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		138EF7E52864230900973227 /* WindPressureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindPressureTableViewCell.swift; sourceTree = "<group>"; };
 		138EF7E62864230900973227 /* WindPressureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindPressureTableViewCell.xib; sourceTree = "<group>"; };
 		138EF7EB286427E500973227 /* WindPresureTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindPresureTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -124,6 +135,9 @@
 		138EF803286473F100973227 /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		138EF804286473F100973227 /* MapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewCell.xib; sourceTree = "<group>"; };
 		138EF809286474CA00973227 /* MapTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		13AE5057286D52830054D4EB /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		13AE5058286D52830054D4EB /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		13AE505D286D5AEB0054D4EB /* SearchTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		13B4DD3B286164E3002FBB0B /* MainApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApi.swift; sourceTree = "<group>"; };
 		13B4DD3F28616BD7002FBB0B /* ForecastCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCellViewModel.swift; sourceTree = "<group>"; };
 		13B4DD442861738B002FBB0B /* ForecastDayTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDayTableCellViewModel.swift; sourceTree = "<group>"; };
@@ -210,6 +224,7 @@
 		1346AD4A2860154300FD46DA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1389980F286A985100075854 /* Search */,
 				1346AD4B2860154300FD46DA /* Home */,
 			);
 			path = Controller;
@@ -283,6 +298,17 @@
 			path = 3.DetailCell;
 			sourceTree = "<group>";
 		};
+		1389980F286A985100075854 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				13AE5056286D521F0054D4EB /* Cell */,
+				13899810286A9ACC00075854 /* SearchViewController.swift */,
+				13899811286A9ACC00075854 /* SearchViewController.xib */,
+				1389981A286AFB8900075854 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		138EF7E4286422CB00973227 /* 4.WindCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +337,16 @@
 				138EF809286474CA00973227 /* MapTableViewCellViewModel.swift */,
 			);
 			path = 6.MapCell;
+			sourceTree = "<group>";
+		};
+		13AE5056286D521F0054D4EB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				13AE5057286D52830054D4EB /* SearchTableViewCell.swift */,
+				13AE5058286D52830054D4EB /* SearchTableViewCell.xib */,
+				13AE505D286D5AEB0054D4EB /* SearchTableViewCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		13B4DD43286172E0002FBB0B /* ForecastCollectionCell */ = {
@@ -353,6 +389,7 @@
 				6AF60D242313B56B00F5CBA2 /* Session.swift */,
 				1346AD0B286013DD00FD46DA /* Weather.swift */,
 				13B4DD3B286164E3002FBB0B /* MainApi.swift */,
+				13899816286AB16500075854 /* Search.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -588,7 +625,9 @@
 				138EF7F2286444B100973227 /* SunTableViewCell.xib in Resources */,
 				1346AD8F2860707F00FD46DA /* ForecastDayTableViewCell.xib in Resources */,
 				138EF806286473F100973227 /* MapTableViewCell.xib in Resources */,
+				13AE505A286D52830054D4EB /* SearchTableViewCell.xib in Resources */,
 				137D0C5428631BE4002C678E /* CollectionViewCell.xib in Resources */,
+				13899813286A9ACC00075854 /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +770,7 @@
 				1346AD7928606F7200FD46DA /* AmountOfRainTableViewCell.swift 09-24-30-636.swift in Sources */,
 				138EF7EC286427E500973227 /* WindPresureTableViewCellViewModel.swift in Sources */,
 				6AF60E1E2313B9C000F5CBA2 /* UIViewControllerExt.swift in Sources */,
+				13899817286AB16500075854 /* Search.swift in Sources */,
 				137D0C5328631BE4002C678E /* CollectionViewCell.swift in Sources */,
 				138EF805286473F100973227 /* MapTableViewCell.swift in Sources */,
 				1346AD9F2860713600FD46DA /* DetailTableViewCell.swift in Sources */,
@@ -739,6 +779,7 @@
 				138EF7E72864230900973227 /* WindPressureTableViewCell.swift in Sources */,
 				137D0C4E28630621002C678E /* DetailTableViewCellViewModel.swift in Sources */,
 				1346AD532860154300FD46DA /* HomeViewModel.swift in Sources */,
+				13899812286A9ACC00075854 /* SearchViewController.swift in Sources */,
 				13418E72286325180074C738 /* AmountOfRainViewModel.swift in Sources */,
 				1346AD6028604D0500FD46DA /* Int.swift in Sources */,
 				1346AD8D2860707F00FD46DA /* ForecastDayTableViewCell.swift in Sources */,
@@ -753,10 +794,13 @@
 				6AF60DC22313B56B00F5CBA2 /* RequestSerializer.swift in Sources */,
 				6AF613CC2313C13A00F5CBA2 /* Button.swift in Sources */,
 				138EF7F7286444F600973227 /* SunTableViewCellViewModel.swift in Sources */,
+				13AE505E286D5AEB0054D4EB /* SearchTableViewCellViewModel.swift in Sources */,
 				6AF613B32313C13A00F5CBA2 /* ViewController.swift in Sources */,
 				138EF7F3286444B100973227 /* SunTableViewCell.swift in Sources */,
+				13AE5059286D52830054D4EB /* SearchTableViewCell.swift in Sources */,
 				13418E6E286324E80074C738 /* AmountCollectionViewCellViewModel.swift in Sources */,
 				6AF613C12313C13A00F5CBA2 /* TableView.swift in Sources */,
+				1389981B286AFB8900075854 /* SearchViewModel.swift in Sources */,
 				6AF613C42313C13A00F5CBA2 /* TableCell.swift in Sources */,
 				6AF613C92313C13A00F5CBA2 /* ImageView.swift in Sources */,
 				1346AD572860154300FD46DA /* HomeTableViewCell.swift in Sources */,

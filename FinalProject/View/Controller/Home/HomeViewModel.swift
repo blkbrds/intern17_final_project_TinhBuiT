@@ -12,11 +12,20 @@ import UIKit
 final class HomeViewModel {
 
     // MARK: - Properties
-    var hourly: [Hourly]?
     var mainWeather: MainWeather?
     var mainApi: MainApi?
-    var daily: [Daily]?
     private let screenWidth = UIScreen.main.bounds.width
+    var lat: Double
+    var lon: Double
+    var isFromSearch: Bool = false
+    var name: String
+
+    init(lat: Double = 16.054407, lon: Double = 108.202164, isFromSearch: Bool = false, name: String = "Da Nang") {
+        self.lat = lat
+        self.lon = lon
+        self.isFromSearch = isFromSearch
+        self.name = name
+    }
 
     enum TypeCell: Int {
         case homeCell = 0
@@ -82,21 +91,8 @@ final class HomeViewModel {
         }
     }
 
-    func getDataWeather(completion: @escaping APICompletion) {
-        WeatherService.getDataWeather { [weak self] result in
-            guard let this = self else { return }
-            switch result {
-            case .success(let mainWeather):
-                this.mainWeather = mainWeather
-                completion(.success)
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
     func getDataMain(completion: @escaping APICompletion) {
-        WeatherService.getDataMainApi(lat: 16.054407) { [weak self] result in
+        WeatherService.getDataMainApi(lat: lat, lon: lon) { [weak self] result in
             guard let this = self else { return }
             switch result {
             case .success(let data):

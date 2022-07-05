@@ -25,23 +25,23 @@ final class MainWeather: Mappable {
     }
 }
 
-final class Weather: Mappable {
-
-    // MARK: - Properties
-    var main: String?
-    var descrip: String?
-    var icon: String?
-
-    init?(map: Map) {
-        mapping(map: map)
-    }
-
-    func mapping(map: Map) {
-        main <- map["main"]
-        descrip <- map["description"]
-        icon <- map["icon"]
-    }
-}
+//final class Weather: Mappable {
+//
+//    // MARK: - Properties
+//    var main: String?
+//    var descrip: String?
+//    var icon: String?
+//
+//    init?(map: Map) {
+//        mapping(map: map)
+//    }
+//
+//    func mapping(map: Map) {
+//        main <- map["main"]
+//        descrip <- map["description"]
+//        icon <- map["icon"]
+//    }
+//}
 
 final class Main: Mappable {
 

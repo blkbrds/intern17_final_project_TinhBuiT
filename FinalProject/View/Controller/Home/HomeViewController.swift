@@ -22,7 +22,7 @@ final class HomeViewController: UIViewController {
         setupUI()
         configTableView()
         configNavigation()
-        loadAPI()
+        loadMainApi()
     }
 
     // MARK: - Private functions
@@ -37,21 +37,36 @@ final class HomeViewController: UIViewController {
     }
 
     private func configNavigation() {
-        title = "Da Nang"
+        title = viewModel.name
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = .clear
-
-        let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchAction))
         navigationItem.rightBarButtonItem = addItem
         addItem.tintColor = .white
 
-        let item = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: nil)
+        let item = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: nil )
         navigationItem.leftBarButtonItem = item
         item.tintColor = .white
+
+        let backButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(back))
+        backButton.tintColor = .white
+        if viewModel.isFromSearch {
+            navigationItem.rightBarButtonItem = nil
+            navigationItem.leftBarButtonItem = backButton
+        }
+    }
+
+    @objc func back() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    @objc func searchAction() {
+        let vc = SearchViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     private func configTableView() {
@@ -84,55 +99,20 @@ final class HomeViewController: UIViewController {
         tableView.reloadData()
     }
 
-    private func loadAPI() {
+    private func loadMainApi() {
         HUD.show()
-        let group = DispatchGroup()
-        group.enter()
-        loadWeather {
-            group.leave()
-        }
-        group.enter()
-        loadMainApi {
-            group.leave()
-        }
-        group.notify(queue: .main, execute: { [weak self] in
-            HUD.dismiss()
-            self?.tableView.reloadData()
-        })
-    }
-
-    private func loadWeather(completion: @escaping () -> Void) {
-        viewModel.getDataWeather { [weak self] result in
-            guard let this = self else {
-                completion()
-                return
-            }
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    break
-                case .failure(let error):
-                    this.alert(msg: error.localizedDescription, handler: nil)
-                }
-                completion()
-            }
-        }
-    }
-
-    private func loadMainApi(completion: @escaping () -> Void) {
         viewModel.getDataMain { [weak self] result in
             guard let this = self else {
-                completion()
                 return
             }
             DispatchQueue.main.async {
                 switch result {
                 case.success:
-                    break
+                    this.tableView.reloadData()
+                    HUD.dismiss()
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }
-                completion()
             }
         }
     }

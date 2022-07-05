@@ -27,7 +27,7 @@ final class HomeTableViewCell: UITableViewCell {
     private func updateView() {
         guard let viewModel = viewModel,
               let weather = viewModel.mainApi?.current?.weather?.first,
-        let main = viewModel.mainApi?.current
+              let main = viewModel.mainApi?.current
         else { return }
         if let status = weather.descrip {
             setUpCaseLabel(title: status, label: statusLabel)
