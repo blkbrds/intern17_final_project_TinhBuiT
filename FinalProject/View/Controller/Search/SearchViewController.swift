@@ -9,11 +9,20 @@
 import UIKit
 import RealmSwift
 
+protocol SearchViewControllerDelegate: class {
+    func homeView(view: SearchViewController, needsPerfom actions: SearchViewController.Action)
+}
+
 final class SearchViewController: UIViewController {
+
+    enum Action {
+        case data(lat: Double, long: Double, name: String)
+    }
 
     // MARK: - Properties
     var viewModel: SearchViewModel = SearchViewModel()
     lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 20))
+    weak var delegate: SearchViewControllerDelegate?
 
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
@@ -83,7 +92,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = HomeViewController()
         vc.viewModel = viewModel.viewModelForHome(at: indexPath)
-        navigationController?.pushViewController(vc, animated: true)
+        delegate?.homeView(view: self, needsPerfom: .data(lat: viewModel.viewModelForHome(at: indexPath).lat,
+                                                          long: viewModel.viewModelForHome(at: indexPath).lon,
+                                                          name: viewModel.viewModelForHome(at: indexPath).name))
+        navigationController?.popViewController(animated: true)
+      //  navigationController?.pushViewController(vc, animated: true)
     }
 }
 

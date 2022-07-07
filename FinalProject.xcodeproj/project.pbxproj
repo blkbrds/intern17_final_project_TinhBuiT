@@ -47,6 +47,8 @@
 		138EF805286473F100973227 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138EF803286473F100973227 /* MapTableViewCell.swift */; };
 		138EF806286473F100973227 /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138EF804286473F100973227 /* MapTableViewCell.xib */; };
 		138EF80A286474CA00973227 /* MapTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138EF809286474CA00973227 /* MapTableViewCellViewModel.swift */; };
+		13AE3FE1287442BC0072C14B /* CustomSideMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13AE3FE0287442BC0072C14B /* CustomSideMenu.xib */; };
+		13AE3FE7287443400072C14B /* CustomSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AE3FE6287443400072C14B /* CustomSideMenu.swift */; };
 		13AE5059286D52830054D4EB /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AE5057286D52830054D4EB /* SearchTableViewCell.swift */; };
 		13AE505A286D52830054D4EB /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13AE5058286D52830054D4EB /* SearchTableViewCell.xib */; };
 		13AE505E286D5AEB0054D4EB /* SearchTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AE505D286D5AEB0054D4EB /* SearchTableViewCellViewModel.swift */; };
@@ -135,6 +137,8 @@
 		138EF803286473F100973227 /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		138EF804286473F100973227 /* MapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewCell.xib; sourceTree = "<group>"; };
 		138EF809286474CA00973227 /* MapTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		13AE3FE0287442BC0072C14B /* CustomSideMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSideMenu.xib; sourceTree = "<group>"; };
+		13AE3FE6287443400072C14B /* CustomSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenu.swift; sourceTree = "<group>"; };
 		13AE5057286D52830054D4EB /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		13AE5058286D52830054D4EB /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		13AE505D286D5AEB0054D4EB /* SearchTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 		1346AD4B2860154300FD46DA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				13AE3FD92874426F0072C14B /* CustomSideMenu */,
 				1346AD4F2860154300FD46DA /* Cell */,
 				1346AD4E2860154300FD46DA /* HomeViewController.swift */,
 				1346AD4D2860154300FD46DA /* HomeViewController.xib */,
@@ -337,6 +342,15 @@
 				138EF809286474CA00973227 /* MapTableViewCellViewModel.swift */,
 			);
 			path = 6.MapCell;
+			sourceTree = "<group>";
+		};
+		13AE3FD92874426F0072C14B /* CustomSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				13AE3FE6287443400072C14B /* CustomSideMenu.swift */,
+				13AE3FE0287442BC0072C14B /* CustomSideMenu.xib */,
+			);
+			path = CustomSideMenu;
 			sourceTree = "<group>";
 		};
 		13AE5056286D521F0054D4EB /* Cell */ = {
@@ -618,6 +632,7 @@
 				6AFD030A231375EF004940FA /* Assets.xcassets in Resources */,
 				1346AD582860154300FD46DA /* HomeTableViewCell.xib in Resources */,
 				1346AD912860707F00FD46DA /* ForecastTableViewCell.xib in Resources */,
+				13AE3FE1287442BC0072C14B /* CustomSideMenu.xib in Resources */,
 				1346AD542860154300FD46DA /* HomeViewController.xib in Resources */,
 				1346AD8E2860707F00FD46DA /* ForecastCollectionViewCell.xib in Resources */,
 				1346AD7628606F7200FD46DA /* AmountOfRainTableViewCell.xib in Resources */,
@@ -806,6 +821,7 @@
 				1346AD572860154300FD46DA /* HomeTableViewCell.swift in Sources */,
 				6AF60E212313B9C000F5CBA2 /* CollectionExt.swift in Sources */,
 				13B4DD452861738B002FBB0B /* ForecastDayTableCellViewModel.swift in Sources */,
+				13AE3FE7287443400072C14B /* CustomSideMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

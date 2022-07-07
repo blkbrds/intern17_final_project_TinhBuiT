@@ -17,20 +17,12 @@ final class SunTableViewCell: UITableViewCell {
     let sunImage = UIImageView(image: UIImage(named: "sun"))
     var realTime: Double = 0.0
 
+    // MARK: - IBOutlets
+    @IBOutlet private weak var sunSetLabel: UILabel!
+    @IBOutlet private weak var sunRiseLabel: UILabel!
+    
     override func awakeFromNib() {
         configView()
-    }
-
-    var sunset: String = "" {
-        didSet {
-            updateSunSet(timeString: sunset)
-        }
-    }
-
-    var sunrise: String = "" {
-        didSet {
-            updateSunRise(timeString: sunrise)
-        }
     }
 
     var viewModel: SunTableViewCellViewModel? {
@@ -107,19 +99,18 @@ final class SunTableViewCell: UITableViewCell {
     }
 
     private func drawLine(start: CGPoint, end: CGPoint) {
+        let path = UIBezierPath()
+        path.move(to: start)
+        path.addLine(to: end)
+        path.close()
 
-            let path = UIBezierPath()
-            path.move(to: start)
-            path.addLine(to: end)
-            path.close()
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = UIColor.systemYellow.cgColor
+        shapeLayer.lineWidth = 1.0
+        shapeLayer.path = path.cgPath
 
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.strokeColor = UIColor.systemYellow.cgColor
-            shapeLayer.lineWidth = 1.0
-            shapeLayer.path = path.cgPath
-
-            self.myCircleView.layer.addSublayer(shapeLayer)
-        }
+        self.myCircleView.layer.addSublayer(shapeLayer)
+    }
 
     private func updateView() {
         guard let viewModel = viewModel,
@@ -128,7 +119,9 @@ final class SunTableViewCell: UITableViewCell {
               let dtTime = viewModel.mainApi?.hourly?.first?.dt
         else { return }
         realTime = (dtTime - sunriseDouble ) / (sunsetDouble - sunriseDouble) + 1
-        sunrise = viewModel.utcToHour(date: sunriseDouble)
-        sunset = viewModel.utcToHour(date: sunsetDouble)
+      let  sunrise = viewModel.utcToHour(date: sunriseDouble)
+     let   sunset = viewModel.utcToHour(date: sunsetDouble)
+        sunSetLabel.text = sunset
+        sunRiseLabel.text = sunrise
     }
 }

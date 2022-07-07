@@ -25,6 +25,7 @@ final class SearchTableViewCellViewModel {
         self.isFavorite = isFavorite
     }
 
+    // MARK: - Functions
     func getName() -> String {
         let name = search?.name ?? ""
         let state = search?.state ?? ""
@@ -34,6 +35,7 @@ final class SearchTableViewCellViewModel {
     }
 }
 
+// MARK: - Results
 extension Results {
     func toArray<T>(ofType: T.Type) -> [T] {
         var array = [T]()

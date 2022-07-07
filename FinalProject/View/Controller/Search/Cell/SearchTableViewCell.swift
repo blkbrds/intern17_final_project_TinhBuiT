@@ -19,7 +19,7 @@ final class SearchTableViewCell: UITableViewCell {
         case save
         case delete
     }
-    
+
     // MARK: - IBOutlets
     @IBOutlet private weak var imageEnsign: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
@@ -54,7 +54,7 @@ final class SearchTableViewCell: UITableViewCell {
         }
     }
 
-    func updateViews() {
+    private func updateViews() {
         guard let viewModel = viewModel, let search = viewModel.search else { return }
         if viewModel.isFavorite {
             favoriteButton.setImage(UIImage(named: "starchoose"), for: .normal)

@@ -15,10 +15,10 @@ final class HomeViewModel {
     var mainWeather: MainWeather?
     var mainApi: MainApi?
     private let screenWidth = UIScreen.main.bounds.width
-    var lat: Double
-    var lon: Double
+    private(set) var lat: Double
+    private(set) var lon: Double
     var isFromSearch: Bool = false
-    var name: String
+    private(set) var name: String
 
     init(lat: Double = 16.054407, lon: Double = 108.202164, isFromSearch: Bool = false, name: String = "Da Nang") {
         self.lat = lat
@@ -102,5 +102,11 @@ final class HomeViewModel {
                 completion(.failure(error))
             }
         }
+    }
+
+    func updateData(newlat: Double, newlong: Double, newname: String) {
+        lat = newlat
+        lon = newlong
+        name = newname
     }
 }

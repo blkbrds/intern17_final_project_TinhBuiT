@@ -10,19 +10,32 @@ import UIKit
 
 final class HomeViewController: UIViewController {
 
-    // MARK: - IBOutlet
+    // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
 
     // MARK: - Properties
     var viewModel: HomeViewModel = HomeViewModel()
+    var customSideMenu = CustomSideMenu()
+    var isShowMenu: Bool = true
+    var sideMenu: UIView = {
+        guard let sideMenu = UINib(nibName: "CustomSideMenu", bundle: .main).instantiate(withOwner: nil, options: nil).first as? UIView else { return UIView() }
+        return sideMenu
+    }()
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         configTableView()
-        configNavigation()
         loadMainApi()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configNavigation()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 
     // MARK: - Private functions
@@ -48,24 +61,43 @@ final class HomeViewController: UIViewController {
         navigationItem.rightBarButtonItem = addItem
         addItem.tintColor = .white
 
-        let item = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: nil )
+        let item = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(showSideMenu))
         navigationItem.leftBarButtonItem = item
         item.tintColor = .white
+    }
 
-        let backButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(back))
-        backButton.tintColor = .white
-        if viewModel.isFromSearch {
-            navigationItem.rightBarButtonItem = nil
-            navigationItem.leftBarButtonItem = backButton
+    @objc private func tap() {
+        if sideMenu.isHidden == false {
+            isShowMenu = false
+            showSideMenu()
         }
     }
 
-    @objc func back() {
-        self.navigationController?.popViewController(animated: true)
+    @objc private func showSideMenu() {
+        view.addSubview(sideMenu)
+        if isShowMenu {
+            sideMenu.frame = CGRect(x: -300, y: 0, width: 300, height: UIScreen.main.bounds.height)
+            UIView.animate(withDuration: 0.2, delay: 0.1, options: [], animations: {
+                self.sideMenu.frame.origin.x = 0
+            }, completion: nil)
+            isShowMenu = false
+            navigationController?.navigationBar.layer.zPosition = -1
+
+        } else {
+            UIView.animate(withDuration: 0.2, delay: 0.1, options: [], animations: {
+                self.sideMenu.frame.origin.x = -300
+            }, completion: nil)
+            isShowMenu = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                self.navigationController?.navigationBar.layer.zPosition = 0
+
+            }
+        }
     }
 
-    @objc func searchAction() {
+    @objc private func searchAction() {
         let vc = SearchViewController()
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -102,6 +134,7 @@ final class HomeViewController: UIViewController {
     private func loadMainApi() {
         HUD.show()
         viewModel.getDataMain { [weak self] result in
+            HUD.dismiss()
             guard let this = self else {
                 return
             }
@@ -109,7 +142,6 @@ final class HomeViewController: UIViewController {
                 switch result {
                 case.success:
                     this.tableView.reloadData()
-                    HUD.dismiss()
                 case .failure(let error):
                     this.alert(msg: error.localizedDescription, handler: nil)
                 }
@@ -167,5 +199,16 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return viewModel.heightcell(at: indexPath)
+    }
+}
+
+// MARK: - SearchViewControllerDelegate
+extension HomeViewController: SearchViewControllerDelegate {
+    func homeView(view: SearchViewController, needsPerfom actions: SearchViewController.Action) {
+        switch actions {
+        case .data(lat: let lats, long: let long, name: let name):
+            viewModel.updateData(newlat: lats, newlong: long, newname: name)
+        }
+        loadMainApi()
     }
 }

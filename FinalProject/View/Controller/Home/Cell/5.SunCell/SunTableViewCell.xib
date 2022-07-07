@@ -36,6 +36,27 @@
                             </view>
                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2py-Bi-NUi">
                                 <rect key="frame" x="10" y="36" width="300" height="146"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjr-dc-Uxg">
+                                        <rect key="frame" x="5" y="110" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwi-zW-eIG">
+                                        <rect key="frame" x="253" y="110" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Qwi-zW-eIG" secondAttribute="bottom" constant="15" id="06r-iL-Qja"/>
+                                    <constraint firstItem="tjr-dc-Uxg" firstAttribute="leading" secondItem="2py-Bi-NUi" secondAttribute="leading" constant="5" id="1GS-lj-pMP"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qwi-zW-eIG" secondAttribute="trailing" constant="5" id="aBB-3R-1r2"/>
+                                    <constraint firstItem="Qwi-zW-eIG" firstAttribute="top" secondItem="tjr-dc-Uxg" secondAttribute="top" id="jRQ-F5-zxs"/>
+                                    <constraint firstAttribute="bottom" secondItem="tjr-dc-Uxg" secondAttribute="bottom" constant="15" id="te1-z6-YBu"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
@@ -64,6 +85,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="myCircleView" destination="2py-Bi-NUi" id="3md-fp-lSl"/>
+                <outlet property="sunRiseLabel" destination="Qwi-zW-eIG" id="wp0-bR-n0J"/>
+                <outlet property="sunSetLabel" destination="tjr-dc-Uxg" id="AGO-bQ-nXW"/>
             </connections>
             <point key="canvasLocation" x="20.289855072463769" y="177.79017857142856"/>
         </tableViewCell>
