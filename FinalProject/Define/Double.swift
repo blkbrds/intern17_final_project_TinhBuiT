@@ -13,13 +13,13 @@ extension Double {
 
     var convertAmountOfRainIcon: UIImage? {
         switch self {
-        case 0...0.2:
+        case 0...0.19:
             return #imageLiteral(resourceName: "rain_ico_0")
-        case 0.2...0.4:
+        case 0.2...0.39:
             return #imageLiteral(resourceName: "rain_ico_10")
-        case 0.4...0.6:
+        case 0.4...0.59:
             return #imageLiteral(resourceName: "rain")
-        case 0.6...0.8:
+        case 0.6...0.79:
             return #imageLiteral(resourceName: "rain_ico_70")
         case 0.8...1:
             return #imageLiteral(resourceName: "rain_ico_100")

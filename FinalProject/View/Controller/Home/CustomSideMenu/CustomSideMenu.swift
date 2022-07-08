@@ -10,9 +10,7 @@ import UIKit
 
 final class CustomSideMenu: UIView {
 
-    override class func awakeFromNib() {
-    }
-    
-    @IBAction func editTouchUpInside(_ sender: UIButton) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
 }

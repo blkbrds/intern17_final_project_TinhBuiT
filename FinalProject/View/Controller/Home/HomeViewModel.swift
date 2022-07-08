@@ -12,7 +12,6 @@ import UIKit
 final class HomeViewModel {
 
     // MARK: - Properties
-    var mainWeather: MainWeather?
     var mainApi: MainApi?
     private let screenWidth = UIScreen.main.bounds.width
     private(set) var lat: Double
@@ -76,12 +75,14 @@ final class HomeViewModel {
     func heightcell(at indexPath: IndexPath) -> CGFloat {
         guard let type = TypeCell(rawValue: indexPath.row) else { return 0 }
         switch type {
-        case .homeCell, .detailCell:
-            return 200
+        case .homeCell:
+            return 300
         case .forecastCell:
             return 530
         case .amountOfRainCell:
             return 180
+        case .detailCell:
+            return 200
         case .windCell:
             return 180
         case .sunCell:

@@ -38,8 +38,4 @@ class CollectionViewCell: UICollectionViewCell {
     private func setIconFromPop(pop: Double, images: UIImageView) {
         images.image = pop.convertAmountOfRainIcon
     }
-
-    private func setNamefromTime(time: String, label: UILabel) {
-        label.text = time.convertTime
-    }
 }

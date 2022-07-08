@@ -49,7 +49,6 @@ final class SearchViewModel {
             let results = realm.objects(Search.self)
             searches = Array(results)
             completion(true)
-
         } catch {
             completion(false)
         }

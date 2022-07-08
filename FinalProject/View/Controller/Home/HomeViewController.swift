@@ -15,12 +15,8 @@ final class HomeViewController: UIViewController {
 
     // MARK: - Properties
     var viewModel: HomeViewModel = HomeViewModel()
-    var customSideMenu = CustomSideMenu()
     var isShowMenu: Bool = true
-    var sideMenu: UIView = {
-        guard let sideMenu = UINib(nibName: "CustomSideMenu", bundle: .main).instantiate(withOwner: nil, options: nil).first as? UIView else { return UIView() }
-        return sideMenu
-    }()
+    var sideMenu: CustomSideMenu? = UINib(nibName: "CustomSideMenu", bundle: .main).instantiate(withOwner: nil, options: nil).first as? CustomSideMenu
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -57,16 +53,17 @@ final class HomeViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = .clear
-        let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchAction))
-        navigationItem.rightBarButtonItem = addItem
-        addItem.tintColor = .white
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchAction))
+        navigationItem.rightBarButtonItem = searchButton
+        searchButton.tintColor = .white
 
-        let item = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(showSideMenu))
-        navigationItem.leftBarButtonItem = item
-        item.tintColor = .white
+        let showSideMenuButton = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(showSideMenu))
+        navigationItem.leftBarButtonItem = showSideMenuButton
+        showSideMenuButton.tintColor = .white
     }
 
     @objc private func tap() {
+        guard let sideMenu = sideMenu else { return }
         if sideMenu.isHidden == false {
             isShowMenu = false
             showSideMenu()
@@ -74,18 +71,19 @@ final class HomeViewController: UIViewController {
     }
 
     @objc private func showSideMenu() {
+        guard let sideMenu = sideMenu else { return }
         view.addSubview(sideMenu)
         if isShowMenu {
             sideMenu.frame = CGRect(x: -300, y: 0, width: 300, height: UIScreen.main.bounds.height)
             UIView.animate(withDuration: 0.2, delay: 0.1, options: [], animations: {
-                self.sideMenu.frame.origin.x = 0
+                sideMenu.frame.origin.x = 0
             }, completion: nil)
             isShowMenu = false
             navigationController?.navigationBar.layer.zPosition = -1
 
         } else {
             UIView.animate(withDuration: 0.2, delay: 0.1, options: [], animations: {
-                self.sideMenu.frame.origin.x = -300
+                sideMenu.frame.origin.x = -300
             }, completion: nil)
             isShowMenu = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {

@@ -12,6 +12,7 @@ final class AmountOfRainTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!
+    let widthCell = UIScreen.main.bounds.width
 
     // MARK: - Properties
     var viewModel: AmountOfRainViewModel? {
@@ -37,7 +38,7 @@ final class AmountOfRainTableViewCell: UITableViewCell {
 extension AmountOfRainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 75, height: 140)
+        return CGSize(width: widthCell / 5, height: 140)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

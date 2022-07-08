@@ -26,17 +26,27 @@ final class SearchViewController: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var heightPositionconstraint: NSLayoutConstraint!
+    @IBOutlet private weak var myPositionView: UIView!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: true)
         configSearchBar()
         configTableView()
-        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        myPositionView.addGestureRecognizer(tap)
         viewModel.fetchData { _ in
             self.tableView.reloadData()
         }
+    }
+
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        let lon: Double = 108.202164
+        let lat: Double = 16.054407
+        let name: String = "Da Nang"
+        delegate?.homeView(view: self, needsPerfom: .data(lat: lat, long: lon, name: name))
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Private functions
@@ -54,10 +64,13 @@ final class SearchViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: "SearchTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
     }
 
     private func loadDataSearch(key: String) {
         viewModel.isSearching = true
+        myPositionView.isHidden = true
+        heightPositionconstraint.constant = 0
         viewModel.getDataSearch(keySearch: key) { [weak self] result in
             guard let this = self else {
                 return
@@ -96,7 +109,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                                                           long: viewModel.viewModelForHome(at: indexPath).lon,
                                                           name: viewModel.viewModelForHome(at: indexPath).name))
         navigationController?.popViewController(animated: true)
-      //  navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -113,6 +125,8 @@ extension SearchViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
+            myPositionView.isHidden = false
+            heightPositionconstraint.constant = 40
             viewModel.fetchData { _ in
                 self.tableView.reloadData()
                 self.viewModel.isSearching = false

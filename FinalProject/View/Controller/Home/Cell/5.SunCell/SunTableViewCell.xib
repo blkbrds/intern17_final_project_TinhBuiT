@@ -85,8 +85,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="myCircleView" destination="2py-Bi-NUi" id="3md-fp-lSl"/>
-                <outlet property="sunRiseLabel" destination="Qwi-zW-eIG" id="wp0-bR-n0J"/>
-                <outlet property="sunSetLabel" destination="tjr-dc-Uxg" id="AGO-bQ-nXW"/>
+                <outlet property="sunRiseLabel" destination="tjr-dc-Uxg" id="pCz-hu-Nin"/>
+                <outlet property="sunSetLabel" destination="Qwi-zW-eIG" id="c1P-Wv-QS3"/>
             </connections>
             <point key="canvasLocation" x="20.289855072463769" y="177.79017857142856"/>
         </tableViewCell>
