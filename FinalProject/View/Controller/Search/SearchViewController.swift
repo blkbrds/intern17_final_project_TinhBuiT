@@ -21,7 +21,7 @@ final class SearchViewController: UIViewController {
 
     // MARK: - Properties
     var viewModel: SearchViewModel = SearchViewModel()
-    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 20))
+    lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 20))
     weak var delegate: SearchViewControllerDelegate?
 
     // MARK: - IBOutlets
@@ -42,8 +42,8 @@ final class SearchViewController: UIViewController {
     }
 
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        let lon: Double = 108.202164
-        let lat: Double = 16.054407
+        let lon: Double = 108.202_164
+        let lat: Double = 16.054_407
         let name: String = "Da Nang"
         delegate?.homeView(view: self, needsPerfom: .data(lat: lat, long: lon, name: name))
         navigationController?.popViewController(animated: true)

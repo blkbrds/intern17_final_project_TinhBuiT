@@ -43,7 +43,7 @@ final class WindPressureTableViewCell: UITableViewCell {
 
 extension UIView {
     func rotate() {
-       let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+       let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.toValue = NSNumber(value: Double.pi * 2)
         rotation.duration = 5
         rotation.isCumulative = true

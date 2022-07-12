@@ -19,7 +19,7 @@ final class HomeViewModel {
     var isFromSearch: Bool = false
     private(set) var name: String
 
-    init(lat: Double = 16.054407, lon: Double = 108.202164, isFromSearch: Bool = false, name: String = "Da Nang") {
+    init(lat: Double = 16.054_407, lon: Double = 108.202_164, isFromSearch: Bool = false, name: String = "Da Nang") {
         self.lat = lat
         self.lon = lon
         self.isFromSearch = isFromSearch

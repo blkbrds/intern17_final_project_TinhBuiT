@@ -70,7 +70,7 @@ final class SearchTableViewCell: UITableViewCell {
                 switch result {
                 case .success(let image):
                     this.imageEnsign.image = image
-                case .failure(_):
+                case .failure:
                     break
                 }
             }

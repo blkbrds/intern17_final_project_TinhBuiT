@@ -58,11 +58,18 @@ final class WeatherService {
         var image: UIImage?
         let imgUrl: String = "https://openweathermap.org/images/flags/\(country).png"
         guard let url = URL(string: imgUrl) else { return }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             DispatchQueue.main.async {
-                image = UIImage(data: data)
-                completion(.success(image))
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    guard let data = data else {
+                        completion(.failure(Api.Error.emptyData))
+                        return
+                    }
+                    image = UIImage(data: data)
+                    completion(.success(image))
+                }
             }
         }
         task.resume()

@@ -22,6 +22,7 @@ final class SunTableViewCell: UITableViewCell {
     @IBOutlet private weak var sunRiseLabel: UILabel!
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         configView()
     }
 
@@ -40,7 +41,7 @@ final class SunTableViewCell: UITableViewCell {
         let heightCell = UIScreen.main.bounds.width / 2 + 100
         let center = CGPoint (x: myCircleView.frame.size.width / 2, y: myCircleView.frame.size.height - 50)
         let circleRadius = myCircleView.frame.size.width / 2 - 20
-        let circlePath = UIBezierPath(arcCenter: center, radius: circleRadius, startAngle: CGFloat(M_PI), endAngle: CGFloat(M_PI * 2), clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: center, radius: circleRadius, startAngle: CGFloat(Double.pi), endAngle: CGFloat(Double.pi * 2), clockwise: true)
 
         semiCircleLayer.path = circlePath.cgPath
         semiCircleLayer.strokeColor = UIColor.yellow.cgColor
@@ -51,13 +52,13 @@ final class SunTableViewCell: UITableViewCell {
         myCircleView.layer.addSublayer(semiCircleLayer)
         sunImage.frame = CGRect(x: 5, y: (myCircleView.frame.size.height - 65), width: 30, height: 30)
 
-        if (M_PI * realTime) > (M_PI) && (M_PI * realTime) < (2 * M_PI) {
+        if (Double.pi * realTime) > (Double.pi) && (Double.pi * realTime) < (2 * Double.pi) {
             myCircleView.addSubview(sunImage)
 
             let orbit = CAKeyframeAnimation(keyPath: "position")
             let circlePathRun = UIBezierPath(arcCenter: center, radius: circleRadius,
-                                           startAngle: CGFloat(M_PI ),
-                                           endAngle: CGFloat(M_PI * realTime), clockwise: true)
+                                           startAngle: CGFloat(Double.pi),
+                                           endAngle: CGFloat(Double.pi * realTime), clockwise: true)
 
             orbit.path = circlePathRun.cgPath
             orbit.duration = 2.9
@@ -72,7 +73,7 @@ final class SunTableViewCell: UITableViewCell {
             myCircleView.layer.addSublayer(shape)
 
             let animate = CABasicAnimation(keyPath: "strokeEnd")
-            animate.toValue = M_PI
+            animate.toValue = Double.pi
             animate.duration = 8.3
             animate.isRemovedOnCompletion = false
             animate.fillMode = .forwards
