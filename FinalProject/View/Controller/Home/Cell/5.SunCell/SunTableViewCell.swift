@@ -1,0 +1,113 @@
+//
+//  SunTableViewCell.swift
+//  FinalProject
+//
+//  Created by Tinh Bui T. VN.Danang on 6/15/22.
+//  Copyright © 2022 Asiantech. All rights reserved.
+//
+
+import UIKit
+
+final class SunTableViewCell: UITableViewCell {
+
+    // MARK: - Properties
+    var semiCircleLayer = CAShapeLayer()
+    let shape = CAShapeLayer()
+    private var points: [CGPoint] = []
+    let sunImage = UIImageView(image: UIImage(named: "sun"))
+    var realTime: Double = 0.0
+
+    // MARK: - IBOutlets
+    @IBOutlet private weak var sunSetLabel: UILabel!
+    @IBOutlet private weak var sunRiseLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configView()
+    }
+
+    var viewModel: SunTableViewCellViewModel? {
+        didSet {
+            configView()
+            updateView()
+        }
+    }
+
+    // MARK: - IBOutlets
+    @IBOutlet weak var myCircleView: UIView!
+
+    // MARK: - Private functions
+    private func configView() {
+        let heightCell = UIScreen.main.bounds.width / 2 + 100
+        let center = CGPoint (x: myCircleView.frame.size.width / 2, y: myCircleView.frame.size.height - 50)
+        let circleRadius = myCircleView.frame.size.width / 2 - 20
+        let circlePath = UIBezierPath(arcCenter: center, radius: circleRadius, startAngle: CGFloat(Double.pi), endAngle: CGFloat(Double.pi * 2), clockwise: true)
+
+        semiCircleLayer.path = circlePath.cgPath
+        semiCircleLayer.strokeColor = UIColor.yellow.cgColor
+        semiCircleLayer.lineWidth = 1
+        semiCircleLayer.fillColor = nil
+        semiCircleLayer.lineDashPattern = [3, 3]
+        semiCircleLayer.strokeEnd = 1
+        myCircleView.layer.addSublayer(semiCircleLayer)
+        sunImage.frame = CGRect(x: 5, y: (myCircleView.frame.size.height - 65), width: 30, height: 30)
+
+        if (Double.pi * realTime) > (Double.pi) && (Double.pi * realTime) < (2 * Double.pi) {
+            myCircleView.addSubview(sunImage)
+
+            let orbit = CAKeyframeAnimation(keyPath: "position")
+            let circlePathRun = UIBezierPath(arcCenter: center, radius: circleRadius,
+                                           startAngle: CGFloat(Double.pi),
+                                           endAngle: CGFloat(Double.pi * realTime), clockwise: true)
+
+            orbit.path = circlePathRun.cgPath
+            orbit.duration = 2.9
+            points.append(circlePathRun.currentPoint)
+            sunImage.center = points.last ?? CGPoint()
+            sunImage.layer.add(orbit, forKey: "orbit")
+
+            shape.path = circlePathRun.cgPath
+            shape.strokeColor = UIColor.systemYellow.cgColor
+            shape.fillColor = nil
+            shape.strokeEnd = 0
+            myCircleView.layer.addSublayer(shape)
+
+            let animate = CABasicAnimation(keyPath: "strokeEnd")
+            animate.toValue = Double.pi
+            animate.duration = 8.3
+            animate.isRemovedOnCompletion = false
+            animate.fillMode = .forwards
+            shape.add(animate, forKey: "animate")
+
+            drawLine(start: CGPoint(x: 0, y: heightCell - 101),
+                     end: CGPoint(x: myCircleView.bounds.size.width, y: heightCell - 101))
+        }
+    }
+
+    private func drawLine(start: CGPoint, end: CGPoint) {
+        let path = UIBezierPath()
+        path.move(to: start)
+        path.addLine(to: end)
+        path.close()
+
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = UIColor.systemYellow.cgColor
+        shapeLayer.lineWidth = 1.0
+        shapeLayer.path = path.cgPath
+
+        self.myCircleView.layer.addSublayer(shapeLayer)
+    }
+
+    private func updateView() {
+        guard let viewModel = viewModel,
+              let sunriseDouble = viewModel.mainApi?.daily?.first?.sunrise,
+              let sunsetDouble = viewModel.mainApi?.daily?.first?.sunset,
+              let dtTime = viewModel.mainApi?.hourly?.first?.dt
+        else { return }
+        realTime = (dtTime - sunriseDouble ) / (sunsetDouble - sunriseDouble) + 1
+        let sunrise = viewModel.utcToHour(date: sunriseDouble)
+        let sunset = viewModel.utcToHour(date: sunsetDouble)
+        sunSetLabel.text = sunset
+        sunRiseLabel.text = sunrise
+    }
+}
